@@ -15,11 +15,13 @@ import { AgGridPokemonsOverviewManager } from './services/services';
     <a target="_blank" href="https://angular.dev/overview">
       Learn more about Angular
     </a>
-    <app-advanced-table [gridManager]="testManager"></app-advanced-table>
+    <app-advanced-table [test]="testWrong" [gridManager]="testManager"></app-advanced-table>
   `,
 })
 export class App<TData, TFilter> {
   name = 'Angular';
+
+  testWrong = {surname: 'my'}
 
   constructor(protected readonly testManager: AgGridPokemonsOverviewManager) {}
 }

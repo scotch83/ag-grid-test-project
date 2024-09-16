@@ -1,4 +1,4 @@
-import { input, Component } from '@angular/core';
+import { input, Component, Input } from '@angular/core';
 import {
   GridOptions,
   ColDef,
@@ -8,9 +8,10 @@ import {
 } from 'ag-grid-community'; // Column Definition Type Interface
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
 import { firstValueFrom } from 'rxjs';
-import { AdvancedDataOverviewManager } from '../../services/base-class';
+import { AdvancedDataOverviewManager,AgGridColumnDefinitionProvider } from '../../services/base-class';
 import { QueryParams } from '../../services/types';
 import { filterModelToQueryParams } from '../../../filterModelParse';
+import { AgGridManager } from '../../services/ag-grid-manager';
 
 @Component({
   selector: 'app-advanced-table',
@@ -20,7 +21,9 @@ import { filterModelToQueryParams } from '../../../filterModelParse';
   styleUrl: './advanced-table.component.css',
 })
 export class AdvancedTableComponent<TData> {
-  cacheBlockSize = 100;
+  @Input()
+  test?: {name:string};
+  cacheBlockSize = 50;
   gridOptions: GridOptions = {
     rowModelType: 'infinite',
     cacheBlockSize: this.cacheBlockSize,
@@ -29,9 +32,11 @@ export class AdvancedTableComponent<TData> {
       getRows: (params: IGetRowsParams) => this.getRows(params),
     },
   };
-  gridManager = input.required<AdvancedDataOverviewManager<TData, ColDef>>();
+  gridManager = input.required<AgGridManager<TData>>();
 
-  constructor() {}
+
+  constructor(
+  ) {}
 
   onGridReady(event: any) {}
   onFilterChanged(event: any) {}
