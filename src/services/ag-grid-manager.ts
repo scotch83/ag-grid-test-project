@@ -1,7 +1,5 @@
 import { AdvancedDataOverviewManager, AgGridColumnDefinitionProvider } from './base-class';
-import { Injectable } from '@angular/core';
-import { ColDef, IGetRowsParams } from 'ag-grid-community'; // Column Definition Type Interface
-
+type Extended<TData> = AdvancedDataOverviewManager<TData> & AgGridColumnDefinitionProvider;
 export interface AgGridManager<
   TData
-> extends AdvancedDataOverviewManager<TData>, AgGridColumnDefinitionProvider  {}
+> extends  Extended<TData>{}

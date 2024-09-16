@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { AdvancedTableComponent } from './components/advanced-table/advanced-table.component';
 import { AdvancedDataOverviewManager } from './services/base-class';
-import { AgGridPokemonsOverviewManager } from './services/services';
+import { AgGridPokemonsOverviewManager, PokemonData } from './services/services';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +15,16 @@ import { AgGridPokemonsOverviewManager } from './services/services';
     <a target="_blank" href="https://angular.dev/overview">
       Learn more about Angular
     </a>
-    <app-advanced-table [test]="testWrong" [gridManager]="testManager"></app-advanced-table>
+    <app-advanced-table [gridManager]="testManager" (selectedData)="onDataSelected($event)"></app-advanced-table>
   `,
 })
 export class App<TData, TFilter> {
   name = 'Angular';
 
-  testWrong = {surname: 'my'}
-
   constructor(protected readonly testManager: AgGridPokemonsOverviewManager) {}
+  onDataSelected(data: PokemonData[]){
+    
+  }
 }
 
 bootstrapApplication(App, {

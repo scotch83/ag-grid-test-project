@@ -1,4 +1,4 @@
-import { input, Component, Input } from '@angular/core';
+import {output, input, Component, Input } from '@angular/core';
 import {
   GridOptions,
   ColDef,
@@ -22,7 +22,7 @@ import { AgGridManager } from '../../services/ag-grid-manager';
 })
 export class AdvancedTableComponent<TData> {
   @Input()
-  test?: {name:string};
+  test?: {name:string, anotherObject: {nameAgain:string}};
   cacheBlockSize = 50;
   gridOptions: GridOptions = {
     rowModelType: 'infinite',
@@ -32,8 +32,8 @@ export class AdvancedTableComponent<TData> {
       getRows: (params: IGetRowsParams) => this.getRows(params),
     },
   };
+  selectedData = output<TData[]>()
   gridManager = input.required<AgGridManager<TData>>();
-
 
   constructor(
   ) {}

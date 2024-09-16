@@ -7,16 +7,18 @@ import { AdvancedDataOverviewManager } from './base-class';
 
 export type PokemonData = { name: string };
 export type FilterParams = { [key: string]: string };
+export type NewColDefs = {
+  nameCol:string 
+}
 @Injectable({ providedIn: 'root' })
 export class AgGridPokemonsOverviewManager
   implements AdvancedDataOverviewManager<PokemonData>
 {
   constructor(protected httpClient: HttpClient) {}
 
-  columnDefinitions: FilterParams[] = [
+  columnDefinitions: NewColDefs[] = [
     {
-      headerName: 'Name',
-      colId: 'name',
+      nameCol: 'Name',
     },
   ];
 
