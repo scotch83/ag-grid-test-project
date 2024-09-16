@@ -1,0 +1,10 @@
+<ag-grid-angular
+#agGrid
+style="height: 500px;"
+class="ag-theme-quartz-dark"
+[columnDefs]="gridManager().columnDefinitions"
+[gridOptions]="gridOptions"
+(gridReady)="onGridReady($event)"
+(filterChanged)="onFilterChanged($event)"
+>
+</ag-grid-angular>
