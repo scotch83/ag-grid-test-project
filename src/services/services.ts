@@ -12,13 +12,15 @@ export type NewColDefs = {
 }
 @Injectable({ providedIn: 'root' })
 export class AgGridPokemonsOverviewManager
-  implements AdvancedDataOverviewManager<PokemonData>
+  implements AgGridManager<PokemonData>
 {
   constructor(protected httpClient: HttpClient) {}
 
-  columnDefinitions: NewColDefs[] = [
+  columnDefinitions: ColDef[] = [
     {
-      nameCol: 'Name',
+      headerName: 'Name',
+      filter: true,
+      valueGetter: (params)=>params.data?.name
     },
   ];
 
