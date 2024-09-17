@@ -19,6 +19,7 @@ export class AgGridPokemonsOverviewManager
   columnDefinitions: ColDef[] = [
     {
       headerName: 'Name',
+      colId: 'name',
       filter: true,
       valueGetter: (params)=>params.data?.name
     },
